@@ -6,8 +6,13 @@
 [![downloads](https://img.shields.io/npm/dm/load-config-folder.svg)](https://npmjs.org/package/load-config-folder)
 [![license](https://img.shields.io/npm/l/load-config-folder.svg)](https://npmjs.org/package/load-config-folder)
 
-Load the config from folder as a plain object. The config file format can be registered.
-The registered file format order is the search order.
+Load the config from folder as a plain object.
+
+* The config file format can be registered.
+* The registered file format order is the search order.
+* the virtual file system can be specfied: `loadConfig.setFileSystem(fs)`
+  * `fs.path = require('path.js/lib/path').path` for the virtual POSIX path.
+    * you must set the path first before call setFileSystem.
 
 The `load-config-folder` is similar to the [load-config-file](https://github.com/snowyu/load-config-file.js).
 But it will load the configuration from the folder with a specified file name, you can use `addConfig`
