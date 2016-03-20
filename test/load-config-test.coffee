@@ -8,10 +8,20 @@ chai.use(sinonChai)
 
 
 loadConfig      = require '../src/'
+fs              = require 'fs'
+fs.path         = require('path.js/lib/path').path
 cfgs            = null
+loadConfig.setFileSystem fs
+
 
 describe 'loadConfig', ->
+  before ->
+    result = loadConfig.addConfig ['index', 'readme', 'config']
+    assert.equal result, 3
+
   it 'should add a config file name', ->
+    old = loadConfig::files
+    loadConfig::files = []
     result = loadConfig.addConfig 'index'
     assert.equal result, 1
     loadConfig::files.should.have.length 1
@@ -20,10 +30,9 @@ describe 'loadConfig', ->
     loadConfig::files.should.have.length 1
     result = loadConfig::files.pop()
     assert.equal result, 'index'
+    loadConfig::files = old
 
   it 'should add multi config file names', ->
-    result = loadConfig.addConfig ['index', 'readme', 'config']
-    assert.equal result, 3
     assert.deepEqual loadConfig::files, ['index', 'readme', 'config']
 
   it 'should register a config format', ->
@@ -119,10 +128,11 @@ describe 'loadConfig', ->
 
   describe 'fake filesystem', ->
     fakeFS = require 'load-config-file/test/fake-fs'
+    before ->
+      loadConfig.setFileSystem(fakeFS).should.be.true
     afterEach ->
       fakeFS.result = {}
     it 'should set FileSystem', ->
-      loadConfig.setFileSystem(fakeFS).should.be.true
       loadConfig::fs.should.be.equal fakeFS
 
     it 'should load config synchronously', ->

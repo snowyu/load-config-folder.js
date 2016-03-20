@@ -4,7 +4,6 @@ isObject        = require('util-ex/lib/is/type/object')
 isFunction      = require('util-ex/lib/is/type/function')
 defineProperty  = require('util-ex/lib/defineProperty')
 Promise         = require('bluebird')
-path            = require('path.js/lib/path').path
 Config          = require('load-config-file')
 
 getKeys     = Object.keys
@@ -14,6 +13,7 @@ module.exports = class FolderConfig
   configurators: {}
   files: []
   fs: fs = null
+  path: path = require('path.js')#require('path.js/lib/path').path
   readFile: readFile = null
 
   constructor: (aPath, aOptions, done) ->
@@ -111,5 +111,8 @@ module.exports = class FolderConfig
   @setFileSystem: (aFileSystem) ->
     if Config.setFileSystem(aFileSystem)
       FolderConfig::fs = fs = aFileSystem
+      FolderConfig::path = path = aFileSystem.path if aFileSystem.path
       FolderConfig::readFile = readFile = fs.readFile
       true
+
+FolderConfig.setFileSystem require('fs')
