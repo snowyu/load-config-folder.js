@@ -32,7 +32,7 @@
   ],
   "dependencies": {
     "bluebird": "^3.3.4",
-    "load-config-file": "^0.3.1",
+    "load-config-file": "^0.3.3",
     "path.js": "^1.0.7",
     "util-ex": "^0.3.10"
   },
