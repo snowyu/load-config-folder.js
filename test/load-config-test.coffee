@@ -70,6 +70,13 @@ describe 'loadConfig', ->
         result.should.be.deep.equal
           str: 'hello'
         done()
+    it 'should load config asynchronously promise', ()->
+      loadConfig.load __dirname+'/fixture/'
+      .then (result)->
+        should.exist result
+        result.should.have.property '$cfgPath', __dirname+'/fixture/config.json'
+        result.should.be.deep.equal
+          str: 'hello'
 
   describe 'object usage', ->
     it 'should create a new Config object', ->
