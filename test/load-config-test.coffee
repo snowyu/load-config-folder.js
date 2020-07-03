@@ -70,6 +70,7 @@ describe 'loadConfig', ->
         result.should.be.deep.equal
           str: 'hello'
         done()
+      return
     it 'should load config asynchronously promise', ()->
       loadConfig.load __dirname+'/fixture/'
       .then (result)->
@@ -79,6 +80,9 @@ describe 'loadConfig', ->
           str: 'hello'
 
   describe 'object usage', ->
+    before ->
+      loadConfig::files = ['index', 'readme', 'config']
+      loadConfig.register ['.jsn', 'jon', '.json'], JSON.parse
     it 'should create a new Config object', ->
       result = new loadConfig 'path1', {hi:112}
       result.should.have.property 'path', 'path1'
@@ -115,6 +119,7 @@ describe 'loadConfig', ->
         result.should.be.deep.equal
           str: 'hello'
         done()
+      return
 
     it 'should load config asynchronously with raise error if nothing loaded', (done)->
       result = new loadConfig __dirname+'/fixture/sds'
@@ -122,6 +127,7 @@ describe 'loadConfig', ->
         should.exist err
         should.not.exist result
         done()
+      return
 
     it 'should load config asynchronously overwrite path', (done)->
       result = new loadConfig __dirname+'/fixture/con'
@@ -132,6 +138,7 @@ describe 'loadConfig', ->
         result.should.be.deep.equal
           str: 'hello'
         done()
+      return
 
   describe 'fake filesystem', ->
     fakeFS = require 'load-config-file/test/fake-fs'
@@ -162,6 +169,7 @@ describe 'loadConfig', ->
           expectedResult['p/config'+k] = encoding: 'ascii'
         fakeFS.result.should.be.deep.equal expectedResult
         done(err)
+      return
 
     describe 'external file names', ->
       it 'should load config synchronously with a config file name', ->
@@ -188,6 +196,7 @@ describe 'loadConfig', ->
             expectedResult['p/as'+k] = file:'as', encoding: 'utf8'
           fakeFS.result.should.be.deep.equal expectedResult
           done(err)
+        return
 
       it 'should load config asynchronously with multi config file names', (done)->
         loadConfig 'p/', file:['as','23'], (err, result)->
@@ -198,3 +207,4 @@ describe 'loadConfig', ->
             expectedResult['p/23'+k] = file:['as','23'], encoding: 'utf8'
           fakeFS.result.should.be.deep.equal expectedResult
           done(err)
+        return
