@@ -37,10 +37,10 @@
     "util-ex": "^0.3.15"
   },
   "devDependencies": {
-    "chai": "~3.5.0",
-    "coffee-coverage": "^1.0.1",
+    "chai": "^4.1.2",
+    "coffee-coverage": "^2.0.1",
     "coffee-script": "^1.12.7",
-    "grunt": "~1.0.0",
+    "grunt": "~1.0.1",
     "grunt-contrib-clean": "*",
     "grunt-contrib-coffee": "*",
     "grunt-contrib-copy": "*",
@@ -48,13 +48,13 @@
     "grunt-mocha-test": "*",
     "grunt-newer": "*",
     "grunt-release": "*",
-    "istanbul": "^0.4.2",
-    "mocha": "~2.4.5",
+    "istanbul": "^0.4.5",
+    "mocha": "~3.5.3",
     "pre-commit": "~1.1.2",
-    "rimraf": "~2.5.2",
-    "shasum": "~1.0.2",
-    "sinon": "~1.17.3",
-    "sinon-chai": "~2.8.0"
+    "rimraf": "^2.6.2",
+    "shasum": "^1.0.2",
+    "sinon": "^3.2.1",
+    "sinon-chai": "^2.13.0"
   },
   "scripts": {
     "test": "grunt test",
