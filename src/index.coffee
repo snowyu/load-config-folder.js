@@ -1,14 +1,16 @@
+any             = require('promise.any')
+# any = require('@ungap/promise-any')
 isArray         = require('util-ex/lib/is/type/array')
 isString        = require('util-ex/lib/is/type/string')
 isObject        = require('util-ex/lib/is/type/object')
 isFunction      = require('util-ex/lib/is/type/function')
 defineProperty  = require('util-ex/lib/defineProperty')
-Promise         = require('bluebird')
 Config          = require('load-config-file')
+# { callbackify } = require('load-config-file/lib/callbackify')
 
 getKeys     = Object.keys
 
-module.exports = class FolderConfig
+class FolderConfig
 
   configurators: {}
   files: []
@@ -44,7 +46,6 @@ module.exports = class FolderConfig
     aPath ?= @path
     aOptions ?= @options
     FolderConfig.load aPath, aOptions, done
-    @
 
   loadSync: (aPath, aOptions)->
     if isObject(aPath)
@@ -81,11 +82,11 @@ module.exports = class FolderConfig
 
     raiseError = aOptions.raiseError
     defineProperty aOptions, 'raiseError', true
-    Promise.any vFiles.map (name)->
+    any vFiles.map (name)->
       Config.load path.join(aPath, name), aOptions
     .catch (err)->
       throw err if raiseError
-    .nodeify done
+    .asCallback done
 
   @loadSync: (aPath, aOptions) ->
     aOptions ?= {}
@@ -116,3 +117,6 @@ module.exports = class FolderConfig
       true
 
 FolderConfig.setFileSystem require('fs')
+
+module.exports = FolderConfig
+module.exports.default = FolderConfig
