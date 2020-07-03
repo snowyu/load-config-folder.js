@@ -121,6 +121,15 @@ describe 'loadConfig', ->
         done()
       return
 
+    it 'should load config asynchronously', ()->
+      result = new loadConfig __dirname+'/fixture/'
+      result.load()
+      .then (result)->
+        should.exist result
+        result.should.have.property '$cfgPath', __dirname+'/fixture/config.json'
+        result.should.be.deep.equal
+          str: 'hello'
+
     it 'should load config asynchronously with raise error if nothing loaded', (done)->
       result = new loadConfig __dirname+'/fixture/sds'
       result.load raiseError: true, (err, result)->
