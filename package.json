@@ -1,7 +1,7 @@
 {
   "name": "load-config-folder",
   "description": "Load the config in the folder as a plain object.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "homepage": "https://github.com/snowyu/load-config-folder.js",
   "repository": {
     "type": "git",
