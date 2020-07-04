@@ -10,3 +10,5 @@ export default class FolderConfig extends Config {
    */
   static addConfig(aFile: string|string[], aConfigFiles?: string[]): number
 }
+
+export * from 'load-config-file';
