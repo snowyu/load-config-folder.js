@@ -32,7 +32,7 @@
     "fs"
   ],
   "dependencies": {
-    "load-config-file": "^1.0.3",
+    "load-config-file": "^1.0.4",
     "path.js": "^1.0.7",
     "promise.any": "^2.0.1",
     "util-ex": "^0.3.15"
