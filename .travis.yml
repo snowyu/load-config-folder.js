@@ -11,6 +11,9 @@ node_js:
   - "12"
   - "13"
   - "14"
+before-install:
+  - "test $TRAVIS_NODE_VERSION == '5' || npm i -g npm"
+
 script: npm run-script test-cov
 after_success:
   - test -e ./coverage/lcov.info && npm install codeclimate-test-reporter && codeclimate-test-reporter
