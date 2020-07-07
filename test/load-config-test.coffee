@@ -89,6 +89,12 @@ describe 'loadConfig', ->
       result.should.have.ownProperty 'options'
       result.options.should.be.deep.equal {hi:112}
 
+    it 'should create a new Config object without path', ->
+      result = new loadConfig {hi:112}
+      result.should.have.property 'path', undefined
+      result.should.have.ownProperty 'options'
+      result.options.should.be.deep.equal {hi:112}
+
     it 'should load config synchronously', ->
       result = new loadConfig(__dirname+'/fixture/')
       result = result.loadSync()

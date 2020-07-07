@@ -28,6 +28,9 @@ class FolderConfig
       else
         result = FolderConfig.loadSync(aPath, aOptions)
       return result
+    if isObject aPath
+      aOptions = aPath
+      aPath = undefined
     @path = aPath
     @options = aOptions if isObject aOptions
 
@@ -54,6 +57,11 @@ class FolderConfig
     aPath ?= @path
     aOptions ?= @options
     FolderConfig.loadSync aPath, aOptions
+
+  addConfig: (aFile, aOptions) ->
+    aOptions ?= @options
+    aConfigFiles = aOptions && aOptions.files
+    FolderConfig.addConfig aFile, aConfigFiles
 
   @addConfig: (aFile, aConfigFiles) ->
     aConfigFiles ?= FolderConfig::files
