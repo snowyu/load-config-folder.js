@@ -5,6 +5,7 @@ isString        = require('util-ex/lib/is/type/string')
 isObject        = require('util-ex/lib/is/type/object')
 isFunction      = require('util-ex/lib/is/type/function')
 defineProperty  = require('util-ex/lib/defineProperty')
+extend          = require('util-ex/lib/extend')
 Config          = require('load-config-file')
 # { callbackify } = require('load-config-file/lib/callbackify')
 
@@ -77,7 +78,7 @@ class FolderConfig
     result
 
   @load: (aPath, aOptions, done) ->
-    aOptions ?= {}
+    aOptions = extend {}, aOptions
     aOptions.encoding ?= 'utf8'
     unless isObject aOptions.configurators
       defineProperty aOptions, 'configurators', FolderConfig::configurators
@@ -93,7 +94,7 @@ class FolderConfig
     any vFiles.map (name)->
       Config.load path.join(aPath, name), aOptions
     .catch (err)->
-      throw err if raiseError
+      throw err if raiseError # && err.name != 'AggregateError'
     .asCallback done
 
   @loadSync: (aPath, aOptions) ->

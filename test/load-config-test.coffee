@@ -144,6 +144,14 @@ describe 'loadConfig', ->
         done()
       return
 
+    it 'should load config asynchronously with raise error if nothing loaded(promise)', (done)->
+      result = new loadConfig __dirname+'/fixture/sds'
+      result.load(raiseError: true).asCallback (err, result)->
+        should.exist err
+        should.not.exist result
+        done()
+      return
+
     it 'should load config asynchronously overwrite path', (done)->
       result = new loadConfig __dirname+'/fixture/con'
       result.load __dirname+'/fixture/', (err, result)->
