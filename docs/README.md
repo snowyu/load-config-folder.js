@@ -23,15 +23,15 @@ to set the specified config file name(it's a `basename`).
 ## Usage
 
 ```js
-var loadConfig = require('load-config-folder');
-var yaml  = require('js-yaml');
-var cson  = require('cson');
+import loadConfig, { FolderConfig } from 'load-config-folder'
+import yaml from 'js-yaml'
+import cson from 'cson'
 
 //the config file basename for the folder.
-loadConfig.addConfig(['_config']);
-loadConfig.register(['.yaml', '.yml'], yaml.safeLoad);
-loadConfig.register('.cson', cson.parseCSONString.bind(cson));
-loadConfig.register('.json', JSON.parse);
+FolderConfig.addConfig(['_config']);
+FolderConfig.register(['.yaml', '.yml'], yaml.safeLoad);
+FolderConfig.register('.cson', cson.parseCSONString.bind(cson));
+FolderConfig.register('.json', JSON.parse);
 
 //Synchronously load config for the folder.
 //it will search folder/_config.yaml, folder/_config.yml, folder/_config.cson, folder/_config.json
@@ -50,15 +50,18 @@ loadConfig('./folder', function(err, result){
   }
 })
 
+let result = await loadConfig('./folder', true)
+result = await FolderConfig.load('./folder')
+result = FolderConfig.loadSync('./folder')
 ```
 
 ## API
 
 ```js
-var config = require('load-config-folder');
+import { FolderConfig } from 'load-config-folder'
 ```
 
-* `config.setFileSystem(fs)`: set your favour file system. defaults to 'fs'.
+* `FolderConfig.setFileSystem(fs)`: set your favour file system. defaults to 'fs'.
   * the "file system" must implement `readFile(path[, options], done)` and `readFileSync(path[, options])`
 * `load(dir, options, done)`: Asynchronously load config from dir
   * return the plain object and the `$cfgPath` property added if suceesful.
