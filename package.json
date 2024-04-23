@@ -7,7 +7,8 @@
     "type": "git",
     "url": "git://github.com/snowyu/load-config-folder.js.git"
   },
-  "main": "lib/",
+  "main": "./lib/index.js",
+  "module": "./src/index.js",
   "files": [
     "README.md",
     "LICENSE-MIT",
@@ -32,34 +33,44 @@
     "fs"
   ],
   "dependencies": {
-    "load-config-file": "^1.0.7",
-    "path.js": "^1.0.7",
-    "promise.any": "^2.0.1",
-    "util-ex": "^0.3.15"
+    "load-config-file": "^2.0.0-alpha.2",
+    "path.js": "^2.0.0-alpha.1",
+    "promise-sequence": "^2.0.0-alpha.1",
+    "util-ex": "^2.0.0-alpha.14"
   },
   "devDependencies": {
-    "chai": "^4.1.2",
-    "coffee-coverage": "^2.0.1",
-    "coffee-script": "^1.12.7",
-    "grunt": "~1.0.1",
-    "grunt-contrib-clean": "*",
-    "grunt-contrib-coffee": "^1.0.0",
-    "grunt-contrib-copy": "*",
-    "grunt-contrib-watch": "*",
-    "grunt-mocha-test": "*",
-    "grunt-newer": "*",
-    "grunt-release": "*",
-    "istanbul": "^0.4.5",
-    "mocha": "~3.5.3",
-    "pre-commit": "~1.1.2",
-    "rimraf": "^2.6.2",
-    "shasum": "^1.0.2",
-    "sinon": "^3.2.1",
-    "sinon-chai": "^2.13.0"
+    "@antfu/eslint-config": "^2.11.4",
+    "@babel/cli": "^7.24.1",
+    "@babel/core": "^7.24.3",
+    "@babel/plugin-transform-modules-commonjs": "^7.24.1",
+    "@babel/register": "^7.23.7",
+    "chai": "~4.3.10",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-tsdoc": "^0.2.17",
+    "mocha": "~10.2.0",
+    "prettier": "^3.2.5",
+    "sinon": "~15.0.3",
+    "sinon-chai": "~3.7.0",
+    "typedoc": "^0.25.12",
+    "typedoc-plugin-markdown": "^3.17.1",
+    "typescript": "^5.4.3"
   },
   "scripts": {
-    "test": "grunt test",
-    "test-cov": "istanbul cover node_modules/.bin/_mocha --report lcovonly"
+    "build": "npm run build.cjs && npm run build.ts && npm run doc.md",
+    "build.cjs": "babel src --out-dir lib --config-file ./.babelrc",
+    "build.ts": "tsc --declaration --emitDeclarationOnly --outDir lib",
+    "clean": "rm -fr web docs lib",
+    "clean.doc": "rm -fr web docs",
+    "clean.ts": "rm -fr lib/*.d.ts",
+    "clean.lib": "rm -fr lib",
+    "doc": "typedoc --plugin none --out web ./src",
+    "doc.md": "typedoc --plugin typedoc-plugin-markdown --out docs ./src",
+    "lint": "npx eslint --config .eslintrc.yml src",
+    "lint.fix": "npm run lint -- --fix",
+    "release": "npm run clean && npm run build && git add docs && git ci -m 'docs: update API docs' && npx commit-and-tag-version -s",
+    "release.alpha": "npm run release -- --prerelease alpha",
+    "test": "mocha"
   },
   "contributors": [
     {
