@@ -154,7 +154,7 @@ node_modules/load-config-file/lib/index.d.ts:40
 
 #### Defined in
 
-[src/index.d.ts:13](https://github.com/snowyu/load-config-folder.js/blob/ca9da6daf662549b5b6aa0240c97e16bcf572e0a/src/index.d.ts#L13)
+[src/index.d.ts:13](https://github.com/snowyu/load-config-folder.js/blob/9c89b9138b058380408a821215c57069704534f7/src/index.d.ts#L13)
 
 ___
 
@@ -332,7 +332,7 @@ return added file count.
 
 #### Defined in
 
-[src/index.d.ts:11](https://github.com/snowyu/load-config-folder.js/blob/ca9da6daf662549b5b6aa0240c97e16bcf572e0a/src/index.d.ts#L11)
+[src/index.d.ts:11](https://github.com/snowyu/load-config-folder.js/blob/9c89b9138b058380408a821215c57069704534f7/src/index.d.ts#L11)
 
 ___
 

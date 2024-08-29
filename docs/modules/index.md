@@ -122,7 +122,7 @@ node_modules/load-config-file/lib/index.d.ts:4
 
 #### Defined in
 
-[src/index.d.ts:16](https://github.com/snowyu/load-config-folder.js/blob/ca9da6daf662549b5b6aa0240c97e16bcf572e0a/src/index.d.ts#L16)
+[src/index.d.ts:16](https://github.com/snowyu/load-config-folder.js/blob/9c89b9138b058380408a821215c57069704534f7/src/index.d.ts#L16)
 
 ▸ **default**(`aPath`, `done`): `void`
 
@@ -139,7 +139,7 @@ node_modules/load-config-file/lib/index.d.ts:4
 
 #### Defined in
 
-[src/index.d.ts:17](https://github.com/snowyu/load-config-folder.js/blob/ca9da6daf662549b5b6aa0240c97e16bcf572e0a/src/index.d.ts#L17)
+[src/index.d.ts:17](https://github.com/snowyu/load-config-folder.js/blob/9c89b9138b058380408a821215c57069704534f7/src/index.d.ts#L17)
 
 ▸ **default**(`aPath`): `any`
 
@@ -155,7 +155,7 @@ node_modules/load-config-file/lib/index.d.ts:4
 
 #### Defined in
 
-[src/index.d.ts:18](https://github.com/snowyu/load-config-folder.js/blob/ca9da6daf662549b5b6aa0240c97e16bcf572e0a/src/index.d.ts#L18)
+[src/index.d.ts:18](https://github.com/snowyu/load-config-folder.js/blob/9c89b9138b058380408a821215c57069704534f7/src/index.d.ts#L18)
 
 ▸ **default**(`aPath`, `aOptions`): `any`
 
@@ -172,7 +172,7 @@ node_modules/load-config-file/lib/index.d.ts:4
 
 #### Defined in
 
-[src/index.d.ts:19](https://github.com/snowyu/load-config-folder.js/blob/ca9da6daf662549b5b6aa0240c97e16bcf572e0a/src/index.d.ts#L19)
+[src/index.d.ts:19](https://github.com/snowyu/load-config-folder.js/blob/9c89b9138b058380408a821215c57069704534f7/src/index.d.ts#L19)
 
 ▸ **default**(`aPath`, `aOptions`, `isAsync`): `Promise`\<`any`\>
 
@@ -190,7 +190,7 @@ node_modules/load-config-file/lib/index.d.ts:4
 
 #### Defined in
 
-[src/index.d.ts:20](https://github.com/snowyu/load-config-folder.js/blob/ca9da6daf662549b5b6aa0240c97e16bcf572e0a/src/index.d.ts#L20)
+[src/index.d.ts:20](https://github.com/snowyu/load-config-folder.js/blob/9c89b9138b058380408a821215c57069704534f7/src/index.d.ts#L20)
 
 ▸ **default**(`aPath`, `isAsync`): `Promise`\<`any`\>
 
@@ -207,4 +207,4 @@ node_modules/load-config-file/lib/index.d.ts:4
 
 #### Defined in
 
-[src/index.d.ts:21](https://github.com/snowyu/load-config-folder.js/blob/ca9da6daf662549b5b6aa0240c97e16bcf572e0a/src/index.d.ts#L21)
+[src/index.d.ts:21](https://github.com/snowyu/load-config-folder.js/blob/9c89b9138b058380408a821215c57069704534f7/src/index.d.ts#L21)
