@@ -33,10 +33,10 @@
     "fs"
   ],
   "dependencies": {
-    "load-config-file": "^2.0.0-alpha.2",
-    "path.js": "^2.0.0-alpha.1",
-    "promise-sequence": "^2.0.0-alpha.1",
-    "util-ex": "^2.0.0-alpha.14"
+    "load-config-file": "^2.0.0",
+    "path.js": "^2.0.0",
+    "promise-sequence": "^2.0.0",
+    "util-ex": "^2.0.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.11.4",
